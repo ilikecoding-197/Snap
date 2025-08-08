@@ -1919,6 +1919,13 @@ SpriteMorph.prototype.primitiveBlocks = function () {
             defaults: [null, 1],
             code: '+='
         },
+        doSubtractVar: {
+            type: 'command',
+            category: 'variables',
+            spec: 'subtract %var by %n',
+            defaults: [null, 1],
+            code: '-='
+        },
         doShowVar: {
             type: 'command',
             category: 'variables',
@@ -2965,8 +2972,8 @@ SpriteMorph.prototype.blockAlternatives = {
     reportVariadicOr: ['reportVariadicAnd'],
 
     // variables
-    doSetVar: ['doChangeVar'],
-    doChangeVar: ['doSetVar'],
+    doSetVar: ['doChangeVar', 'doSubtractVar'],
+    doChangeVar: ['doSetVar', 'doSubtractVar'],
     doShowVar: ['doHideVar'],
     doHideVar: ['doShowVar'],
 
@@ -3938,6 +3945,7 @@ SpriteMorph.prototype.blockTemplates = function (
 
         blocks.push(block('doSetVar'));
         blocks.push(block('doChangeVar'));
+        blocks.push(block('doSubtractVar'));
         blocks.push(block('doShowVar'));
         blocks.push(block('doHideVar'));
         blocks.push(block('doDeclareVariables'));
@@ -11179,6 +11187,7 @@ StageMorph.prototype.blockTemplates = function (
 
         blocks.push(block('doSetVar'));
         blocks.push(block('doChangeVar'));
+        blocks.push(block('doSubtractVar'));
         blocks.push(block('doShowVar'));
         blocks.push(block('doHideVar'));
         blocks.push(block('doDeclareVariables'));

@@ -2103,6 +2103,22 @@ Process.prototype.doChangeVar = function (varName, value) {
     varFrame.changeVar(name, value, this.blockReceiver());
 };
 
+Process.prototype.doSubtractVar = function (varName, value) {
+    var varFrame = this.context.variables,
+        name = varName;
+    this.assertType(value, ['number', 'list'], '');
+    if (name instanceof Context) {
+        if (name.expression.selector === 'reportGetVar') {
+            name.variables.changeVar(
+                name.expression.blockSpec,
+                -value,
+                this.blockReceiver()
+            );
+            return;
+        }
+    }
+    varFrame.changeVar(name, -value, this.blockReceiver());
+};
 Process.prototype.reportGetVar = function () {
     // assumes a getter block whose blockSpec is a variable name
     return this.context.variables.getVar(

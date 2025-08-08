@@ -12330,7 +12330,7 @@ InputSlotMorph.prototype.mappedCode = function () {
     if (!isNaN(+val)) {return val; }
     if (!isString(val)) {return val; }
     if (block && contains(
-            ['doSetVar', 'doChangeVar', 'doShowVar', 'doHideVar'],
+            ['doSetVar', 'doChangeVar', 'doSubtractVar', 'doShowVar', 'doHideVar'],
             block.selector
         )) {
         return val;
