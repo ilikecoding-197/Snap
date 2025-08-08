@@ -2283,6 +2283,10 @@ Process.prototype.reportNewList = function (elements) {
     return elements;
 };
 
+Process.prototype.reportEmptyList = function () {
+    return new List();
+}
+
 Process.prototype.reportCONS = function (car, cdr) {
     this.assertType(cdr, 'list');
     return new List().cons(car, cdr);

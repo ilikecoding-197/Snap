@@ -1956,6 +1956,15 @@ SpriteMorph.prototype.primitiveBlocks = function () {
                 (prim t reportNewList inputs)
                 (report (get inputs)))`
         },
+        reportEmptyList: {
+            type: 'reporter',
+            category: 'lists',
+            spec: 'empty list',
+            code: "emptyList",
+            src: `(
+                (prim t reportEmptyList) 
+                (report (list)))`
+        },
         reportCONS: {
             type: 'reporter',
             category: 'lists',
@@ -3942,6 +3951,7 @@ SpriteMorph.prototype.blockTemplates = function (
 
         blocks.push('=');
         blocks.push(block('reportNewList'));
+        blocks.push(block('reportEmptyList'));
         blocks.push(block('reportNumbers'));
         blocks.push('-');
         blocks.push(block('reportCONS'));
@@ -11174,6 +11184,7 @@ StageMorph.prototype.blockTemplates = function (
         blocks.push(block('doDeclareVariables'));
         blocks.push('=');
         blocks.push(block('reportNewList'));
+        blocks.push(block('reportEmptyList'));
         blocks.push(block('reportNumbers'));
         blocks.push('-');
         blocks.push(block('reportCONS'));
